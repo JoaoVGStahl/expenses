@@ -61,12 +61,28 @@ class MyHomePage extends StatelessWidget {
                         padding: EdgeInsets.all(5),
                         child: Text(
                           tr.value.toString(),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.blue),
                         ),
                       ),
                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(tr.title),
-                          Text(tr.date.toString()),
+                          Text(
+                            tr.title,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            tr.date.toString(),
+                            style: TextStyle(
+                              color: Colors.grey,
+                            ),
+                          )
                         ],
                       )
                     ],
