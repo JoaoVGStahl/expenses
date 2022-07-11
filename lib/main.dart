@@ -60,7 +60,7 @@ class MyHomePage extends StatelessWidget {
                         )),
                         padding: EdgeInsets.all(5),
                         child: Text(
-                          tr.value.toString(),
+                          'R\$${tr.value.toStringAsFixed(2)}',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
