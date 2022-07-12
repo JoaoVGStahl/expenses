@@ -16,7 +16,7 @@ class TransactionList extends StatelessWidget {
       height: 500,
       child: ListView.builder(
         itemCount: transactions.length,
-        itemBuilder: (ctx,index){
+        itemBuilder: (ctx, index) {
           final tr = transactions[index];
           return Card(
             child: Row(
@@ -28,7 +28,7 @@ class TransactionList extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                       border: Border.all(
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.primary,
                     width: 2,
                   )),
                   padding: EdgeInsets.all(5),
@@ -37,7 +37,7 @@ class TransactionList extends StatelessWidget {
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Colors.blue),
+                        color: Theme.of(context).colorScheme.primary),
                   ),
                 ),
                 Column(

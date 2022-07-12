@@ -11,7 +11,30 @@ main() => runApp(ExpensesApp());
 class ExpensesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MyHomePage());
+    final ThemeData tema = ThemeData();
+    return MaterialApp(
+        home: MyHomePage(),
+        theme: tema.copyWith(
+          colorScheme: tema.colorScheme.copyWith(
+            primary: Colors.blue,
+            secondary: Colors.grey,
+          ),
+          textTheme: tema.textTheme.copyWith(
+            headline6: TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+          appBarTheme: AppBarTheme(
+            titleTextStyle: TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ));
   }
 }
 
@@ -55,13 +78,15 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _transcations.add(newTransaction);
     });
+
+    Navigator.of(context).pop();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Despesas Pessoais"),
+        title: Text("ForEx"),
         actions: [
           IconButton(
               onPressed: () => _openTransactionFormModal(context),
@@ -74,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               Container(
                 child: Card(
-                  color: Colors.blue,
+                  color: Theme.of(context).colorScheme.primary,
                   elevation: 5,
                   child: Text("Gráfico"),
                 ),
