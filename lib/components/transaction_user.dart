@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:expenses/components/transaction_form.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -27,14 +29,75 @@ class _TransactionUserState extends State<TransactionUser> {
       value: 129.90,
       date: DateTime.now(),
     ),
+    Transaction(
+      id: "t3",
+      title: "Conta Internet",
+      value: 129.90,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: "t4",
+      title: "Conta Internet",
+      value: 129.90,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: "t5",
+      title: "Conta Internet",
+      value: 129.90,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: "t6",
+      title: "Conta Internet",
+      value: 129.90,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: "t7",
+      title: "Conta Internet",
+      value: 129.90,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: "t8",
+      title: "Conta Internet",
+      value: 129.90,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: "t9",
+      title: "Conta Internet",
+      value: 129.90,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: "t10",
+      title: "Conta Internet",
+      value: 129.90,
+      date: DateTime.now(),
+    ),
   ];
+
+  _addTransaction(String title, double value) {
+    final newTransaction = Transaction(
+      id: Random().nextDouble().toString(),
+      title: title,
+      value: value,
+      date: DateTime.now(),
+    );
+
+    setState(() {
+      _transcations.add(newTransaction);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        TransactionForm(_addTransaction),
         TransactionList(_transcations),
-        TransactionForm(),
       ],
     );
   }
