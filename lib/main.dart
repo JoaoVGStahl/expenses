@@ -21,7 +21,7 @@ class ExpensesApp extends StatelessWidget {
           ),
           textTheme: tema.textTheme.copyWith(
             headline6: TextStyle(
-              fontFamily: 'OpenSans',
+              fontFamily: 'JetBrainsMono',
               fontSize: 18,
               fontWeight: FontWeight.bold,
               color: Colors.black,
@@ -29,7 +29,7 @@ class ExpensesApp extends StatelessWidget {
           ),
           appBarTheme: AppBarTheme(
             titleTextStyle: TextStyle(
-              fontFamily: 'OpenSans',
+              fontFamily: 'JetBrainsMono',
               fontSize: 25,
               fontWeight: FontWeight.bold,
             ),
@@ -44,8 +44,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _transcations = [
-    Transaction(
+  final List<Transaction> _transcations = [
+    /* Transaction(
       id: "t1",
       title: "Air Jordan",
       value: 150.00,
@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
       title: "Conta Internet",
       value: 129.90,
       date: DateTime.now(),
-    ),
+    ), */
   ];
 
   _openTransactionFormModal(BuildContext context) {
