@@ -21,17 +21,14 @@ class ExpensesApp extends StatelessWidget {
             secondary: Colors.grey,
           ),
           textTheme: tema.textTheme.copyWith(
-            headline6: TextStyle(
-              fontFamily: 'JetBrainsMono',
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-            button: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold
-            )
-          ),
+              headline6: TextStyle(
+                fontFamily: 'JetBrainsMono',
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+              button:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
           appBarTheme: AppBarTheme(
             titleTextStyle: TextStyle(
               fontFamily: 'JetBrainsMono',
@@ -49,56 +46,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _transcations = [
-    Transaction(
-      id: "t0",
-      title: "Conta Antiga",
-      value: 500.00,
-      date: DateTime.now().subtract(Duration(days: 1)),
-    ),
-    Transaction(
-      id: "t1",
-      title: "Air Jordan",
-      value: 150.00,
-      date: DateTime.now().subtract(Duration(days: 2)),
-    ),
-    Transaction(
-      id: "t2",
-      title: "Conta Internet",
-      value: 129.90,
-      date: DateTime.now().subtract(Duration(days: 3)),
-    ),
-    Transaction(
-      id: "t3",
-      title: "Conta Energia",
-      value: 118.90,
-      date: DateTime.now().subtract(Duration(days: 4)),
-    ),
-    Transaction(
-      id: "t4",
-      title: "Gás",
-      value: 120.90,
-      date: DateTime.now().subtract(Duration(days: 5)),
-    ),
-    Transaction(
-      id: "t5",
-      title: "Parcela MT-03",
-      value: 700.00,
-      date: DateTime.now().subtract(Duration(days: 6)),
-    ),
-    Transaction(
-      id: "t6",
-      title: "Seguro",
-      value: 148.80,
-      date: DateTime.now().subtract(Duration(days: 7)),
-    ),
-    Transaction(
-      id: "t7",
-      title: "Curso",
-      value: 49.80,
-      date: DateTime.now(),
-    ),
-  ];
+  final List<Transaction> _transcations = [];
 
   List<Transaction> get _recentTransactions {
     return _transcations.where((tr) {
@@ -114,12 +62,12 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
-  _addTransaction(String title, double value) {
+  _addTransaction(String title, double value, DateTime date) {
     final newTransaction = Transaction(
       id: Random().nextDouble().toString(),
       title: title,
       value: value,
-      date: DateTime.now(),
+      date: date,
     );
 
     setState(() {
