@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:expenses/components/chart.dart';
@@ -86,8 +87,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
     bool isLandscape =
-        MediaQuery.of(context).orientation == Orientation.landscape;
+        mediaQuery.orientation == Orientation.landscape;
 
     final appBar = AppBar(
       title: Text(
@@ -109,9 +111,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
     );
 
-    final availableHeight = MediaQuery.of(context).size.height -
+    final availableHeight = mediaQuery.size.height -
         appBar.preferredSize.height -
-        MediaQuery.of(context).padding.top;
+        mediaQuery.padding.top;
 
     return Scaffold(
       appBar: appBar,
@@ -126,15 +128,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               if (!_showChart || !isLandscape)
                 Container(
-                  height: availableHeight * 0.75,
+                  height: availableHeight * (isLandscape ? 1 : 0.70),
                   child: TransactionList(_transcations, _deleteTransaction),
                 ),
             ]),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: Platform.isAndroid ? FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () => _openTransactionFormModal(context),
-      ),
+      ) : Container(),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
