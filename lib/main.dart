@@ -86,7 +86,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final appBar = AppBar(
-      title: Text("ForEx"),
+      title: Text(
+        "ForEx",
+      ),
       actions: [
         IconButton(
             onPressed: () => _openTransactionFormModal(context),
@@ -94,8 +96,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
     );
 
-    final availableHeight =
-        MediaQuery.of(context).size.height - appBar.preferredSize.height - MediaQuery.of(context).padding.top;
+    final availableHeight = MediaQuery.of(context).size.height -
+        appBar.preferredSize.height -
+        MediaQuery.of(context).padding.top;
 
     return Scaffold(
       appBar: appBar,
@@ -104,11 +107,11 @@ class _MyHomePageState extends State<MyHomePage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Container(
-                height: availableHeight * 0.3,
+                height: availableHeight * 0.25,
                 child: Chart(_recentTransactions),
               ),
               Container(
-                height: availableHeight * 0.7,
+                height: availableHeight * 0.75,
                 child: TransactionList(_transcations, _deleteTransaction),
               ),
             ]),
