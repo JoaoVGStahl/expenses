@@ -47,6 +47,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _transcations = [];
+  bool _showChart = false;
 
   List<Transaction> get _recentTransactions {
     return _transcations.where((tr) {
@@ -85,14 +86,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    bool isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
+
     final appBar = AppBar(
       title: Text(
         "ForEx",
       ),
       actions: [
+        if(isLandscape) IconButton(
+          onPressed: () {
+            setState(() {
+              _showChart = !_showChart;
+            });
+          },
+          icon: Icon(_showChart ? Icons.list : Icons.show_chart),
+        ),
         IconButton(
-            onPressed: () => _openTransactionFormModal(context),
-            icon: Icon(Icons.add))
+          onPressed: () => _openTransactionFormModal(context),
+          icon: Icon(Icons.add),
+        ),
       ],
     );
 
@@ -106,14 +119,16 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Container(
-                height: availableHeight * 0.25,
-                child: Chart(_recentTransactions),
-              ),
-              Container(
-                height: availableHeight * 0.75,
-                child: TransactionList(_transcations, _deleteTransaction),
-              ),
+              if (_showChart || !isLandscape)
+                Container(
+                  height: availableHeight * (isLandscape ? 0.70 : 0.25),
+                  child: Chart(_recentTransactions),
+                ),
+              if (!_showChart || !isLandscape)
+                Container(
+                  height: availableHeight * 0.75,
+                  child: TransactionList(_transcations, _deleteTransaction),
+                ),
             ]),
       ),
       floatingActionButton: FloatingActionButton(
